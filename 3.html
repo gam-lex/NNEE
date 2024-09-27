@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NNEE</title>
+</head>
+<body>
+  <div id="side" class="opacity">
+    <div id="dummy"></div>
+    <div class="side_icon">
+      <a href="./2.html"><img src="./icon/list.svg" alt="playlist" class="ico"></a>
+      <span class="text">playlist</span>
+    </div>
+    <div class="side_icon">
+      <a href="./3.html" id="tag17"><img src="./icon/music.svg" alt="songs" class="ico"></a>
+      <span class="text">songs</span>
+    </div>
+    <div class="side_icon">
+      <a href="./1(수정형).html"><img src="./icon/home.svg" alt="home" class="ico"></a>
+      <span class="text">home</span>
+    </div>
+  </div>
+  <div id="menu">
+    <img onclick="menuMove()" src="./icon/menu.svg" alt="메뉴" id="on">
+    <span>듣고싶은 노래를 언제든지</span>
+  </div>
+  <h1 class="stop">playlist</h1>
+  <div id="enchant"></div>
+  <div id="swapMain">
+    <img id="swap" src="./icon/swap.svg" alt="swap">
+    <select>
+      <option value="date">날짜순</option>
+      <option value="name">이름순</option>
+      <option value="nameBack">이름역순</option>
+      <option value="random">랜덤</option>
+    </select>
+  </div>
+  <style>
+    select{
+      border: 0;
+      position: absolute;
+      left: 0%;
+      width: 80%;
+      height: 100%;
+    }
+    #swapMain{
+      border: 2px solid gray;
+      width: 220px;
+      height: 50px;
+      position: absolute;
+      top: 13%;
+      left: 70%;      
+    }
+    #swap{
+      left: 80%;
+      top: 7%;
+      position: absolute;
+      filter: invert(1);
+      background-color: rgb(96, 32, 16);
+      cursor: pointer;
+      width: 42px;
+      height: 42px;
+      padding: 5px;
+      border: 1.5px solid rgb(149, 39, 33);
+      border-radius: 30px;
+    }
+    #enchant{
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1{
+      z-index: -2;
+      color: rgb(16, 27, 63);
+      text-align: center;
+      font-size: 55px;
+      position: absolute;
+      transition: 0.3s;
+      top: 8%;
+      text-align: center;
+    }
+    .stop{
+      left: 8%;
+    }
+    .move{
+      left: 12%;
+    }
+    .dommy{
+      z-index: -4;
+      margin: 72px;
+      height: 15%;
+      z-index: -2;
+        width: 12%;
+        background-color: aqua;
+        display: block;
+        opacity: 0;
+      }
+    .song{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 40px;
+    }
+    .frame{
+      text-decoration-line: none;
+      padding: 25px;
+        display: flex;
+        align-items: center;
+        width: 78%;
+        height: 40px;
+        border-bottom: 1px solid rgb(224, 224, 224);
+    }
+    .title{
+      z-index: -2;
+      width: 900px;
+        position: relative;
+        left: 5%;
+        font-size: 16px;
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        color: black;
+    }
+    .text2{
+        color: rgb(130, 130, 130);
+        font-size: 16px;
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+    }
+    .dot{
+        width: 22px;
+        height: 22px;
+    }
+    .dotButton{
+      cursor: pointer;
+        z-index: 1;
+        background-color: white;
+        border: 0;
+        position: relative;
+        left: 30%;
+    }
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #dummy{
+      margin: 80px;
+    }
+    #on{
+      z-index: 10;
+      cursor: pointer;
+      width: 33px;
+    }
+    .side_icon{
+      cursor: pointer;
+      margin-bottom: 45px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    #side{
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: solid white 500px;
+      border-right: solid #E6E6E6 1px;
+      position: fixed;
+      display: flex;
+      align-items: center;
+      width: 150px;
+      height: 100%;
+      background-color: white;
+      transition: 0.3s;
+    }
+    body {
+      height: 100vh;
+    }
+    #menu{
+      z-index: 2;
+      color: rgb(16, 27, 63);
+      position: fixed;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px;
+      width: 100%;
+      height: 60px;
+      background-color: white;
+      border-bottom: solid #E6E6E6 1px;
+      display: flex;
+    }
+    .ico {
+      width: 50px;
+      padding: 6px;
+    }
+    .text{
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .opacity {
+      position: fixed;
+      left: -150px;
+    }
+    .non{
+      position: fixed;
+      left: 0;
+    }
+  </style>
+  <script defer>
+    const sort = JSON.parse(localStorage.getItem("listType"))
+    var num = sort.tagNumber
+    const playlist = {tagNumber: ""}
+    console.log(num)
+    var count = 1;
+    const menu = document.getElementById('side')
+    const button = document.getElementById('on')
+    const title = document.querySelector('h1')
+    const tag17 = document.getElementById('tag17')
+    var swap = document.getElementById('swap')
+    var select = document.querySelector('select')
+    const nameList = ['봄playlist','여름playlist','가을playlist','겨울playlist','설레는playlist','이별playlist','KPOP playlist','KPOP playlist','등교playlist','노래방playlist','노래방playlist','POP playlist','2018 playlist','공부playlist','인스타playlist','OST playlist','전체playlist']
+    for(let i = 0; i < 17; i++){
+      if(num == i+1){title.innerHTML = nameList[i]}
+    }
+    var menuMove = function(){
+      if(count==0){
+        console.log("꺼짐");
+        menu.setAttribute('class', 'opacity')
+        title.setAttribute('class','stop')
+        count = 1;
+      }
+      else{
+        console.log("켜짐");
+        menu.setAttribute('class','non')
+        title.setAttribute('class','move')
+        count = 0;
+      }
+    }
+    var found = function(){
+      window.open("./404.html","_self");
+    }
+    tag17.addEventListener('click',()=>{
+        playlist.tagNumber = 17
+        localStorage.setItem('listType',JSON.stringify(playlist))
+      })
+    const sing = []
+    document.getElementById('enchant').innerHTML = `<div class="dommy">dummy</div>`
+    for(let i=1;i<17;i++){
+      if(num == i){
+        fetch('./노래/'+i+'-dskey.json')
+        .then(response => response.json())
+        .then(data => {
+          for(let j=0; j< data.body.length; j++){
+            sing.push(data.body[j])
+          }
+          for(let j =0;j < sing.length;j++){
+            document.getElementById('enchant').innerHTML += `<a target="_blank" href="${sing[j].link}" class = "frame"><div class = "song"><span class = "text2">track</span><span class = "title">${sing[j].name}</span><button onclick="found()" class = "dotButton"><img class="dot" src="./icon/3dot.svg" alt="..."></button></div></a>`
+          }
+        });
+      }
+    }
+    if(num == 17){
+      fetch('./노래/전체-dskey.json')
+      .then(response => response.json())
+      .then(data => {
+        for(let j=0; j< data.body.length; j++){
+          sing.push(data.body[j])
+        }
+        for(let i =0;i < sing.length;i++){
+          document.getElementById('enchant').innerHTML += `<a target= "_blank" href="${sing[i].link}" class = "frame"><div class = "song"><span class = "text2">track</span><span class = "title">${sing[i].name}</span><button onclick="found()" class = "dotButton"><img class="dot" src="./icon/3dot.svg" alt="..."></button></div></a>`
+        }
+      });
+    }
+    var song = []
+    song.push(sing)
+    swap.addEventListener('click',()=>{
+      document.getElementById('enchant').innerHTML = ""
+      document.getElementById('enchant').innerHTML += `<div class="dommy">dummy</div>`
+      if(select.value == 'date'){
+        sing.sort(function(a,b){
+          if (a.dateSortKey > b.dateSortKey) {
+            return 1;
+          }
+          if (a.dateSortKey < b.dateSortKey) {
+            return -1;
+          }
+          else{return 0;}
+        })
+      }
+      if(select.value=='name'){
+        sing.sort(function (a, b) {
+      if (a.name.charCodeAt() > b.name.charCodeAt()) {
+        return 1;
+      }
+      if (a.name.charCodeAt() < b.name.charCodeAt()) {
+        return -1;
+      }
+      else{return 0;}
+    });
+      }
+      if(select.value=='nameBack'){
+        sing.sort(function (a, b) {
+      if (a.name.charCodeAt() > b.name.charCodeAt()) {
+        return -1;
+      }
+      if (a.name.charCodeAt() < b.name.charCodeAt()) {
+        return 1;
+      }
+      else{return 0;}
+    });
+      }
+      if(select.value=='random'){
+        sing.sort(() => Math.random() - 0.5)
+      }
+      for(let j =0;j < sing.length;j++){
+        document.getElementById('enchant').innerHTML += `<a target="_blank" href="${sing[j].link}" class = "frame"><div class = "song"><span class = "text2">track</span><span class = "title">${sing[j].name}</span><button onclick="found()" class = "dotButton"><img class="dot" src="./icon/3dot.svg" alt="..."></button></div></a>`
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NNEE</title>
+</head>
+<body>
+  <div id="side" class="opacity">
+    <div id="dummy"></div>
+    <div class="side_icon">
+      <a href="./2.html"><img src="./icon/list.svg" alt="playlist" class="ico"></a>
+      <span class="text">playlist</span>
+    </div>
+    <div class="side_icon">
+      <a href="./3.html" id="tag17"><img src="./icon/music.svg" alt="songs" class="ico"></a>
+      <span class="text">songs</span>
+    </div>
+    <div class="side_icon">
+      <a href="./1(수정형).html"><img src="./icon/home.svg" alt="home" class="ico"></a>
+      <span class="text">home</span>
+    </div>
+  </div>
+  <div id="menu">
+    <img src="./icon/menu.svg" alt="메뉴" id="on">
+    <span>듣고싶은 노래를 언제든지</span>
+  </div>
+  <div id="main">
+      <h1 id="name">NNEE</h1>
+      <a href="./2.html">
+        <button id="search"><img class="magnify" src="./icon/search.svg" alt="카테고리검색하기"></button>
+      </a>
+    </div>
+  <style>
+    .magnify{
+      position: relative;
+      top: 6%;
+      width: 40px;
+      height: 40px;
+      filter: invert(1);
+    }
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #dummy{
+      margin: 80px;
+    }
+    #on{
+      cursor: pointer;
+      width: 33px;
+    }
+    .side_icon{
+      cursor: pointer;
+      margin-bottom: 45px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    #side{
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: solid white 500px;
+      border-right: solid #E6E6E6 1px;
+      position: fixed;
+      display: flex;
+      align-items: center;
+      width: 150px;
+      height: 100%;
+      background-color: white;
+      transition: 0.3s;
+    }
+    body {
+      height: 100vh;
+    }
+    #menu{
+      color: rgb(16, 27, 63);
+      position: fixed;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px;
+      width: 100%;
+      height: 60px;
+      background-color: white;
+      border-bottom: solid #E6E6E6 1px;
+      display: flex;
+    }
+    h1 {
+      text-align: center;
+      font-size: 100px;
+    }
+    #main{
+      transition: 2s;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+    #search{
+      width: 400px;
+      height: 49px;
+      background-color: rgb(16, 27, 63);
+      color: white;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+    .ico {
+      width: 50px;
+      padding: 6px;
+    }
+    .text{
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .opacity {
+      left: -150px;
+    }
+    .non{
+      left: 0;
+    }
+  </style>
+  <script>
+    const playlist = {tagNumber: ""}
+    var count = 1;
+    var menu = document.getElementById('side')
+    var button = document.getElementById('on')
+    var tag17 = document.getElementById('tag17')
+    button.addEventListener('click',()=>{
+      if(count==0){
+        menu.setAttribute("class", "opacity")
+        count = 1;
+      }
+      else{
+        menu.setAttribute("class","non")
+        count = 0;
+      }
+    })
+    tag17.addEventListener('click',()=>{
+        playlist.tagNumber = 17
+        localStorage.setItem('listType',JSON.stringify(playlist))
+      })
+  </script>
+</body>
+</html>

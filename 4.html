@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NNEE</title>
+</head>
+<body>
+  <div id="side" class="opacity">
+    <div id="dummy"></div>
+    <div class="side_icon">
+      <img src="./icon/list.svg" alt="playlist" class="ico">
+      <span class="text">playlist</span>
+    </div>
+    <div class="side_icon">
+      <img src="./icon/music.svg" alt="songs" class="ico">
+      <span class="text">songs</span>
+    </div>
+    <div class="side_icon">
+      <a href="./1(수정형).html"><img src="./icon/home.svg" alt="home" class="ico"></a>
+      <span class="text">home</span>
+    </div>
+  </div>
+  <div id="menu">
+    <img src="./icon/menu.svg" alt="메뉴" id="on">
+    <span>듣고싶은 노래를 언제든지</span>
+  </div>
+  <h1>뽑기</h1>
+  <img id="machine" src="./icon/machine.png" alt="">
+  <style>
+    #machine{
+      width: 375px;
+      height: 700px;
+      position: absolute;
+      left: 50vw;
+      top: 50vh;
+      transform: translate(-50%,-50%);
+    }
+      h1{
+      z-index: -2;
+      color: rgb(16, 27, 63);
+      text-align: center;
+      font-size: 55px;
+      position: absolute;
+      transition: 0.3s;
+      top: 8%;
+      text-align: center;
+      left: 8%;
+    }
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #dummy{
+      margin: 80px;
+    }
+    #on{
+      cursor: pointer;
+      width: 33px;
+    }
+    .side_icon{
+      cursor: pointer;
+      margin-bottom: 45px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    #side{
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: solid white 500px;
+      border-right: solid #E6E6E6 1px;
+      position: fixed;
+      display: flex;
+      align-items: center;
+      width: 150px;
+      height: 100%;
+      background-color: white;
+      transition: 0.3s;
+    }
+    body {
+      height: 100vh;
+    }
+    #menu{
+      color: rgb(16, 27, 63);
+      position: fixed;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px;
+      width: 100%;
+      height: 60px;
+      background-color: white;
+      border-bottom: solid #E6E6E6 1px;
+      display: flex;
+    }
+    h1{
+      text-align: center;
+      font-size: 60px;
+    }
+    #main{
+      transition: 2s;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+    #search{
+      width: 300px;
+      height: 40px;
+      background-color: rgb(16, 27, 63);
+      color: white;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+    .ico {
+      width: 50px;
+      padding: 6px;
+    }
+    .text{
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .opacity {
+      left: -150px;
+    }
+    .non{
+      left: 0;
+    }
+  </style>
+  <script>
+    var count = 1;
+    var menu = document.getElementById('side')
+    var button = document.getElementById('on')
+    button.addEventListener('click',()=>{
+      if(count==0){
+        menu.setAttribute("class", "opacity")
+        count = 1;
+      }
+      else{
+        menu.setAttribute("class","non")
+        count = 0;
+      }
+    })
+  </script>
+</body>
+</html>
